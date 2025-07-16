@@ -4,15 +4,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const app = express();
 
 // Use the environment variable if it's set
-let serviceAccount;
-if (process.env.SERVICE_ACCOUNT_JSON) {
-  serviceAccount = JSON.parse(
-    Buffer.from(process.env.SERVICE_ACCOUNT_JSON, "base64").toString("utf8")
-  );
-} else {
-  console.error("SERVICE_ACCOUNT_JSON environment variable is missing.");
-  process.exit(1);
-}
+
 
 // Create a JWT client to authenticate with Firebase
 const jwtClient = new JWT({
